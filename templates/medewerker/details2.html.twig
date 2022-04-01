@@ -1,0 +1,32 @@
+{% extends 'medewerker.html.twig' %}
+
+{% block menu %}
+    <li><a href="{{ path('soortactiviteitenoverzicht') }}">home</a></li>
+    <li><a href="{{ path('beheer2') }}"><span class="badge">{{ aantal }}</span>beheer2</a></li>
+{% endblock %}
+{% block content %}
+
+
+    <section >
+        <table class="table table-bordered" style="table-layout: fixed">
+            <caption>Soortactiviteit</caption>
+            <tr >
+                <td>Naam</td>
+                <td class="text-primary">{{ soortactiviteit.naam }}</td>
+            </tr>
+            <tr>
+                <td>Min Leeftijd:</td>
+                <td>{{ soortactiviteit.minleeftijd }} </td>
+            </tr>
+            <tr >
+                <td>tijd:</td>
+                <td> {{ soortactiviteit.tijdsduur }}</td>
+            </tr>
+            <tr >
+                <td>prijs:</td>
+                <td>  {{ soortactiviteit.prijs }}</td>
+            </tr>
+        </table>
+    </section>
+
+{% endblock %}

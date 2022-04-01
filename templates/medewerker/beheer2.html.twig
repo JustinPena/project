@@ -1,0 +1,70 @@
+{% extends 'medewerker.html.twig' %}
+
+{% block menu %}
+    <li><a href="{{ path('soortactiviteitenoverzicht') }}">home</a></li>
+    <li class="active"><a href="{{ path('beheer2') }}"><span class="badge">{{ soortactiviteiten|length }}</span>beheer 2</a></li>
+{% endblock %}
+{% block content %}
+    <section >
+        <table class="table" style="table-layout: fixed">
+            <caption>Dit zijn alle soortactiviteiten van het kartcentrum</caption>
+            <thead>
+            <tr>
+                <td>ID</td>
+                <td>Naam</td>
+                <td>Min Leeftijd</td>
+                <td>Tijdsduur</td>
+                <td>Prijs</td>
+                <td>verwijderen</td>
+            </tr>
+            </thead>
+            <tbody>
+            {% for soortactiviteit in soortactiviteiten %}
+                <tr>
+                    <td>
+                        {{ soortactiviteit.id}}
+                    </td>
+                    <td>
+                        {{ soortactiviteit.naam }}
+                    </td>
+
+                    <td>
+                        {{ soortactiviteit.minleeftijd }}
+                    </td>
+                    <td>
+                        {{ soortactiviteit.tijdsduur }}
+                    </td>
+                    <td>
+                        {{ soortactiviteit.prijs }}
+                    </td>
+                    <td title="bewerk de gegevens van deze soortactiviteit">
+
+
+                        <a href="{{ path('soortupdate', {'id':soortactiviteit.id}) }}" >
+                            <span class="glyphicon glyphicon-pencil" style="color:red"></span>
+                        </a>
+                    </td>
+                    <td title="verwijder deze soortactiviteit is definitief">
+                        <a href="{{ path('soortdelete', {'id':soortactiviteit.id}) }}" >
+                            <span class="glyphicon glyphicon-minus" style="color:red"></span>
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+            <tr>
+                <td colspan="6">
+                    <a href="{{ path('soortadd') }}">
+                        <span class="glyphicon glyphicon-plus" style="color:red"></span>
+                    </a>
+                </td>
+
+            </tr>
+
+            </tbody>
+
+        </table>
+
+
+    </section>
+
+{% endblock %}

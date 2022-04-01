@@ -1,0 +1,47 @@
+{% extends 'medewerker.html.twig' %}
+
+{% block menu %}
+    <li class="active"><a href="{{ path('soortactiviteitenoverzicht') }}">home</a></li>
+    <li><a href="{{ path('beheer2') }}"><span class="badge">{{ soortactiviteiten|length }}</span>beheer2</a></li>
+{% endblock %}
+{% block content %}
+    <section >
+        <table class="table" style="table-layout: fixed">
+            <caption>Dit zijn alle soortactiviteiten van het kartcentrum</caption>
+            <thead>
+            <tr>
+                <td>ID</td>
+                <td>Naam</td>
+                <td>Min Leeftijd</td>
+                <td>Tijdsduur</td>
+                <td>Prijs</td>
+            </tr>
+            </thead>
+            <tbody>
+            {% for soortactiviteit in soortactiviteiten %}
+                <tr>
+                    <td>
+                        {{ soortactiviteit.id}}
+                    </td>
+                    <td>
+                        {{ soortactiviteit.naam }}
+                    </td>
+
+                    <td>
+                        {{ soortactiviteit.minleeftijd }}
+                    </td>
+                    <td>
+                        {{ soortactiviteit.tijdsduur }}
+                    </td>
+                    <td>
+                        {{ soortactiviteit.prijs }}
+                    </td>
+                </tr>
+            {% endfor %}
+
+            </tbody>
+        </table>
+        <br />
+    </section>
+
+{% endblock %}
